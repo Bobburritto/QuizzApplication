@@ -19,7 +19,7 @@ public class RegisterController {
     @FXML private CheckBox adminCheckBox;
     @FXML private TextField adminCodeField;
 
-    private static final String DB_URL = "jdbc:postgresql://db.rlhgofxmecvirnwxrfzo.supabase.co:5432/postgres?sslmode=require";
+    private static final String DB_URL = "jdbc:postgresql://db.rlhgofxmecvirnwxrfzo.supabase.co:5432/postgres";
     private static final String DB_USER = "postgres";
     private static final String DB_PASSWORD = "2iuks3dy";
     private static final String ADMIN_REGISTRATION_CODE = "1234";
@@ -41,8 +41,10 @@ public class RegisterController {
 
     private void testDatabaseConnection() {
         try (Connection connection = DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD)) {
+            showAlert("y", "y");
             System.out.println("Database connection successful!");
         } catch (SQLException e) {
+            showAlert("N", "N");
             System.out.println("Database connection failed: " + e.getMessage());
             showAlert("Database Error", "Cannot connect to database. Check MySQL Database Connection");
         }
