@@ -41,10 +41,8 @@ public class RegisterController {
 
     private void testDatabaseConnection() {
         try (Connection connection = DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD)) {
-            showAlert("y", "y");
             System.out.println("Database connection successful!");
         } catch (SQLException e) {
-            showAlert("N", "N");
             System.out.println("Database connection failed: " + e.getMessage());
             showAlert("Database Error", "Cannot connect to database. Check MySQL Database Connection");
         }
